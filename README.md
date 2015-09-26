@@ -16,6 +16,18 @@ dependencies {
     compile files('libs/nessie-java-wrapper.jar')
 }
 ```
+
+6. Additionaly, add the following lines to your dependencies as well
+
+```java
+dependencies {
+    compile 'com.squareup.retrofit:retriofit:1.9.0'
+    compile 'com.google.code.gson:gson:2.3.1'
+}
+```
+
+Also REQUIRED are these two lines to your gradle file. 
+
 Resync your gradle file if needed and your'e good to go.
 
 ##Usage
