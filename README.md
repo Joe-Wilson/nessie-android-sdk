@@ -17,18 +17,16 @@ dependencies {
 }
 ```
 
-6. Additionaly, add the following lines to your dependencies as well
+6. Additionaly, add the following line to your dependencies as well
 
 ```java
 dependencies {
-    compile 'com.squareup.retrofit:retriofit:1.9.0'
-    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
 }
 ```
 
-Also REQUIRED are these two lines to your gradle file. 
 
-Resync your gradle file if needed and your'e good to go.
+Resync your gradle file if needed and your good to go.
 
 ##Usage
 Create a Nessie Client instance. *The client instance will be a singleton*
