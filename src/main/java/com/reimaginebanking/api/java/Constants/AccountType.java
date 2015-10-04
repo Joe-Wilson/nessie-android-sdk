@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public enum AccountType {
     @SerializedName("Credit Card")
     CREDITCARD("Credit Card"),
-    @SerializedName("Saving")
+    @SerializedName("Savings")
     SAVINGS("Savings"),
     @SerializedName("Checking")
     CHECKING("Checking");
