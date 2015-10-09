@@ -26,7 +26,7 @@ public class Account {
         this.balance = builder.balance;
     }
 
-    public Account(String _id, AccountType type, String nickname, int rewards, double balance, List<String> bill_ids, String customer) {
+    private Account(String _id, AccountType type, String nickname, int rewards, double balance, List<String> bill_ids, String customer) {
         this._id = _id;
         this.type = type;
         this.nickname = nickname;

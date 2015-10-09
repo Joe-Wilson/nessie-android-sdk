@@ -17,7 +17,7 @@ public class Merchant {
         this.geocode = builder.geocode;
     }
 
-    public Merchant(String _id, String name, Address address, Geocode geocode) {
+    private Merchant(String _id, String name, Address address, Geocode geocode) {
         this._id = _id;
         this.name = name;
         this.address = address;

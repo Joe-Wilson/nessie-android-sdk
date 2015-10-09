@@ -24,7 +24,7 @@ public class Withdrawal {
         this.transaction_date = builder.transaction_date;
     }
 
-    public Withdrawal(String _id, String transaction_date, String status, TransactionType type, TransactionMedium medium, String payer_id, double amount, String description) {
+    private Withdrawal(String _id, String transaction_date, String status, TransactionType type, TransactionMedium medium, String payer_id, double amount, String description) {
         this._id = _id;
         this.transaction_date = transaction_date;
         this.status = status;

@@ -29,7 +29,7 @@ public class Bill {
         this.payment_amount = builder.payment_amount;
     }
 
-    public Bill(String _id, BillStatus status, String payee, String nickname, String creation_date, String payment_date, int recurring_date, String upcoming_payment_date, double payment_amount) {
+    private Bill(String _id, BillStatus status, String payee, String nickname, String creation_date, String payment_date, int recurring_date, String upcoming_payment_date, double payment_amount) {
         this._id = _id;
         this.status = status;
         this.payee = payee;

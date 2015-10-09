@@ -24,7 +24,7 @@ public class Purchase {
         this.description = builder.description;
     }
 
-    public Purchase(String _id, String purchase_date, String status, TransactionType type, String payer_id, String merchant_id, double amount, String description) {
+    private Purchase(String _id, String purchase_date, String status, TransactionType type, String payer_id, String merchant_id, double amount, String description) {
         this._id = _id;
         this.purchase_date = purchase_date;
         this.status = status;

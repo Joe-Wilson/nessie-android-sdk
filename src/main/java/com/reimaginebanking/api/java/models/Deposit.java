@@ -24,7 +24,7 @@ public class Deposit {
         this.description = builder.description;
     }
 
-    public Deposit(String _id, String transaction_date, String status, TransactionType type, TransactionMedium medium, String payee_id, double amount, String description) {
+    private Deposit(String _id, String transaction_date, String status, TransactionType type, TransactionMedium medium, String payee_id, double amount, String description) {
         this._id = _id;
         this.transaction_date = transaction_date;
         this.status = status;

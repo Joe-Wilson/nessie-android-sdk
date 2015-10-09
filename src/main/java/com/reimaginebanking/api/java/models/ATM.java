@@ -16,7 +16,7 @@ public class ATM {
     private Geocode geocode;
 
 
-    public ATM(String _id, String accessibility, String name, List<String> language_list, List<String> hours, Address address, long amount_left, Geocode geocode) {
+    private ATM(String _id, String accessibility, String name, List<String> language_list, List<String> hours, Address address, long amount_left, Geocode geocode) {
         this._id = _id;
         this.accessibility = accessibility;
         this.name = name;
