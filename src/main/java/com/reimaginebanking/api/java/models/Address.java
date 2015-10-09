@@ -16,7 +16,7 @@ public class Address {
     private String city;
     private String zip;
 
-    private Address(String state, String streetName, String streetNumber, String city, String zip) {
+    public Address(String state, String streetName, String streetNumber, String city, String zip) {
         this.state = state;
         this.streetName = streetName;
         this.streetNumber = streetNumber;
