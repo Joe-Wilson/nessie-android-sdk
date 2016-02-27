@@ -15,6 +15,7 @@ public class Purchase {
     private String merchant_id;
     private double amount;
     private String description;
+    private String medium;
 
     public Purchase(Builder builder){
         this.status = builder.status;
@@ -22,9 +23,10 @@ public class Purchase {
         this.purchase_date = builder.purchase_date;
         this.amount = builder.amount;
         this.description = builder.description;
+        this.medium = builder.medium;
     }
 
-    public Purchase(String _id, String purchase_date, String status, TransactionType type, String payer_id, String merchant_id, double amount, String description) {
+    public Purchase(String _id, String purchase_date, String status, TransactionType type, String payer_id, String merchant_id, double amount, String description, String medium) {
         this._id = _id;
         this.purchase_date = purchase_date;
         this.status = status;
@@ -33,6 +35,7 @@ public class Purchase {
         this.merchant_id = merchant_id;
         this.amount = amount;
         this.description = description;
+        this.medium = medium;
     }
 
     public String get_id() {
@@ -99,6 +102,14 @@ public class Purchase {
         this.description = description;
     }
 
+    public String getMedium() {
+        return medium;
+    }
+
+    public void setMedium(String medium) {
+        this.medium = medium;
+    }
+
     @Override
     public String toString() {
         return "Purchase{" +
@@ -110,6 +121,8 @@ public class Purchase {
                 ", merchant_id='" + merchant_id + '\'' +
                 ", amount=" + amount +
                 ", description='" + description + '\'' +
+                ", medium=" + medium +
+
                 '}';
     }
 
@@ -119,6 +132,7 @@ public class Purchase {
         private double amount;
         private String merchant_id;
         private String description;
+        private String medium;
 
         public Builder(){}
 
@@ -143,6 +157,11 @@ public class Purchase {
 
         public Builder description(String description){
             this.description = description;
+            return this;
+        }
+
+        public Builder medium(String medium) {
+            this.medium = medium;
             return this;
         }
 

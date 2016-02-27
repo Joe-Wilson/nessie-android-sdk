@@ -6,6 +6,7 @@ import com.reimaginebanking.api.java.Adapters.BillTypeAdapter;
 import com.reimaginebanking.api.java.Constants.AccountType;
 import com.reimaginebanking.api.java.Constants.BillStatus;
 import com.reimaginebanking.api.java.Constants.TransactionMedium;
+import com.reimaginebanking.api.java.Constants.TransactionType;
 import com.reimaginebanking.api.java.models.*;
 import com.reimaginebanking.api.java.models.Account;
 import com.reimaginebanking.api.java.models.Customer;
@@ -26,7 +27,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         //String key = "c3f7f751db5dc04db17a1aed58d319e9";
-        String key = "c5eb47e52df8d39d9e7d861e45fa325e";
+        String key = "68ff704991bbd54e1d11dbb82b56d663";
         NessieClient nessieClient = NessieClient.getInstance();
 
         nessieClient.setAPIKey(key);
@@ -569,6 +570,25 @@ public class Main {
 //                }
 //            }
 //        });
+
+        //WORKS
+        //testing createPurchase()
+//        System.out.println("purchase test");
+//            Purchase.Builder pb = new Purchase.Builder();
+//            Purchase p = pb.amount(1.00)
+//                    .description("test purchase please ignore")
+//                    .medium("balance")
+//                    .purchase_date("2016-02-27")
+//                    .status("pending")
+//                    .merchant("56c66be6a73e492741507624")
+//                    .build();
+//        System.out.println(p);
+//            nessieClient.createPurchase("56c66be6a73e492741507f1d", p, new NessieResultsListener() {
+//                @Override
+//                public void onSuccess(Object result, NessieException e) {
+//                    System.out.println("success creating purchase!");
+//                }
+//            });
 
         System.out.println("HELLO");
         
