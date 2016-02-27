@@ -3,13 +3,18 @@ package com.reimaginebanking.api.java;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.reimaginebanking.api.java.Adapters.BillTypeAdapter;
+import com.reimaginebanking.api.java.Constants.BillStatus;
 import com.reimaginebanking.api.java.models.*;
 import com.reimaginebanking.api.java.models.Transfer;
 import com.reimaginebanking.api.java.requests.NessieService;
 
+import java.io.IOException;
 import java.util.List;
 
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -159,17 +164,39 @@ public class NessieClient {
     //BILL
 
     public void getBills(String accountID, final NessieResultsListener mlistener){
-        service.getBills(this.key, accountID, new Callback<List<Bill>>() {
+        final OkHttpClient client = new OkHttpClient();
+        final String url = "http://api.reimaginebanking.com/accounts/" + accountID + "/bills?key=" + key;
+        Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                .build();
+
+        client.newCall(request).enqueue(new com.squareup.okhttp.Callback() {
             @Override
-            public void success(List<Bill> bills, Response response) {
-                mlistener.onSuccess(bills, null);
+            public void onFailure(Request request, IOException e) {
+                mlistener.onSuccess(null, new NessieException(RetrofitError.networkError(url, e)));
             }
 
             @Override
-            public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+            public void onResponse(com.squareup.okhttp.Response response) throws IOException {
+                String body = response.body().string();
+                Gson gson = new Gson();
+                List<Bill> bills = gson.fromJson(body, new TypeToken<List<Bill>>(){}.getType());
+                mlistener.onSuccess(bills, null);
             }
         });
+//        service.getBills(this.key, accountID, new Callback<List<Bill>>() {
+//            @Override
+//            public void success(List<Bill> bills, Response response) {
+//                mlistener.onSuccess(bills, null);
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                mlistener.onSuccess(null, new NessieException(error));
+//            }
+//        });
     }
 
     public void getBill(String billID, final NessieResultsListener mlistener){
@@ -187,13 +214,27 @@ public class NessieClient {
     }
 
     public void getCustomerBills(String customerID, final NessieResultsListener mlistener){
-        service.getCustomerBills(this.key, customerID, new Callback<List<Bill>>() {
-            public void success(List<Bill> bills, Response response) {
-                mlistener.onSuccess(bills, null);
+        final OkHttpClient client = new OkHttpClient();
+        final String url = "http://api.reimaginebanking.com/customers/" + customerID + "/bills?key=" + key;
+        Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                .build();
+
+        client.newCall(request).enqueue(new com.squareup.okhttp.Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                mlistener.onSuccess(null, new NessieException(RetrofitError.networkError(url, e)));
             }
 
-            public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+            @Override
+            public void onResponse(com.squareup.okhttp.Response response) throws IOException {
+                String body = response.body().string();
+                Gson gson = new Gson();
+                List<Bill> bills = gson.fromJson(body, new TypeToken<List<Bill>>() {
+                }.getType());
+                mlistener.onSuccess(bills, null);
             }
         });
     }

@@ -10,6 +10,10 @@ import com.reimaginebanking.api.java.models.*;
 import com.reimaginebanking.api.java.models.Account;
 import com.reimaginebanking.api.java.models.Customer;
 import com.reimaginebanking.api.java.models.RequestResponse;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -70,23 +74,23 @@ public class Main {
 
 
 //        //WORKS
-        nessieClient.getCustomers(new NessieResultsListener() {
-            @Override
-            public void onSuccess(Object result, NessieException e) {
-                if (e == null) {
-                    ArrayList<Customer> customers = (ArrayList<Customer>) result;
-                    System.out.println("CUSTOMERS TEST");
-                    System.out.println(customers.size());
-                    //System.out.println(customers.get(0).toString());
-                    for(Customer customer: customers){
-                        System.out.println(customer.toString());
-                    }
-                } else {
-                    System.out.println("CUSTOMERS TEST");
-                    System.out.println(e.toString());
-                }
-            }
-        });
+//        nessieClient.getCustomers(new NessieResultsListener() {
+//            @Override
+//            public void onSuccess(Object result, NessieException e) {
+//                if (e == null) {
+//                    ArrayList<Customer> customers = (ArrayList<Customer>) result;
+//                    System.out.println("CUSTOMERS TEST");
+//                    System.out.println(customers.size());
+//                    //System.out.println(customers.get(0).toString());
+//                    for(Customer customer: customers){
+//                        System.out.println(customer.toString());
+//                    }
+//                } else {
+//                    System.out.println("CUSTOMERS TEST");
+//                    System.out.println(e.toString());
+//                }
+//            }
+//        });
 ////
 //        nessieClient.getCustomersAsEnterprise(new NessieResultsListener() {
 //            @Override
@@ -250,24 +254,24 @@ public class Main {
 //        });
 
         //WORKS
-        Account account = new Account.Builder()
-                .type(AccountType.CHECKING)
-                .nickname("TEST ACCOUNT")
-                .rewards(100)
-                .balance(100)
-                .build();
-        nessieClient.createAccount("555bed95a520e036e52b20fe", account, new NessieResultsListener() {
-            @Override
-            public void onSuccess(Object result, NessieException e) {
-                if (e == null) {
-                    RequestResponse response = (RequestResponse) result;
-                    System.out.println("CREATE ACCOUNT TEST");
-                    System.out.println(response.toString());
-                } else {
-                    System.out.println(e.toString());
-                }
-            }
-        });
+//        Account account = new Account.Builder()
+//                .type(AccountType.CHECKING)
+//                .nickname("TEST ACCOUNT")
+//                .rewards(100)
+//                .balance(100)
+//                .build();
+//        nessieClient.createAccount("555bed95a520e036e52b20fe", account, new NessieResultsListener() {
+//            @Override
+//            public void onSuccess(Object result, NessieException e) {
+//                if (e == null) {
+//                    RequestResponse response = (RequestResponse) result;
+//                    System.out.println("CREATE ACCOUNT TEST");
+//                    System.out.println(response.toString());
+//                } else {
+//                    System.out.println(e.toString());
+//                }
+//            }
+//        });
 
         //WORKS
 //        nessieClient.getBranches(new NessieResultsListener() {
@@ -567,6 +571,7 @@ public class Main {
 //        });
 
         System.out.println("HELLO");
+        
     }
 
 }
